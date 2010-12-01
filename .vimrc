@@ -184,3 +184,7 @@ set expandtab
 set tabstop=4
 set expandtab ts=4 sw=4 ai
 set number
+
+" cscope 
+" Refresh cscope
+nmap <F2>:!find . -iname '*.c' -o -iname '*.cpp' -o -iname '*.h' -o -iname '*.hpp' > cscope.files<CR>:!cscope -b -i cscope.files -f cscope.out<CR>:cs reset<CR>
