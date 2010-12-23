@@ -1,5 +1,5 @@
 
-source ~/.exports
+#source ~/.exports
 
 export PBRT_SEARCHPATH=$HOME/Projects/git/pbrt-v1/bin
 #export PORT_SEARCHPATH=/opt/local/bin
@@ -202,3 +202,5 @@ zstyle ':completion:*:ssh:*' tag-order \
 zstyle ':completion:*:ssh:*' group-order \
    hosts-domain hosts-host users hosts-ipaddr
 zstyle '*' single-ignored show
+
+alias screen='TERM=screen screen'
