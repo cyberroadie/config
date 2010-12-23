@@ -203,4 +203,3 @@ zstyle ':completion:*:ssh:*' group-order \
    hosts-domain hosts-host users hosts-ipaddr
 zstyle '*' single-ignored show
 
-alias screen='TERM=screen screen'
