@@ -1,22 +1,5 @@
 scriptencoding utf-8
-" ^^ Please leave the above line at the start of the file.
 
-" Default configuration file for Vim
-" $Header: /var/cvsroot/gentoo-x86/app-editors/vim-core/files/vimrc-r2,v 1.2 2005/09/22 19:51:44 ciaranm Exp $
-
-" Written by Aron Griffis <agriffis@gentoo.org>
-" Modified by Ryan Phillips <rphillips@gentoo.org>
-" Modified some more by Ciaran McCreesh <ciaranm@gentoo.org>
-" Added Redhat's vimrc info by Seemant Kulleen <seemant@gentoo.org>
-
-" You can override any of these settings on a global basis via the
-" "/etc/vim/vimrc.local" file, and on a per-user basis via "~/.vimrc". You may
-" need to create these.
-
-" {{{ General settings
-" The following are some sensible defaults for Vim for most users.
-" We attempt to change as little as possible from Vim's defaults,
-" deviating only where it makes sense
 set nocompatible        " Use Vim defaults (much better!)
 set bs=2                " Allow backspacing over everything in insert mode
 set ai                  " Always set auto-indenting on
@@ -39,16 +22,8 @@ set suffixes+=.info,.aux,.log,.dvi,.bbl,.out
 if v:version >= 700
   set numberwidth=3
 endif
-" }}}
-
-" {{{ Modeline settings
-" We don't allow modelines by default. See bug #14088 and bug #73715.
-" If you're not concerned about these, you can enable them on a per-user
-" basis by adding "set modeline" to your ~/.vimrc file.
 set nomodeline
-" }}}
 
-" {{{ Locale settings
 " Try to come up with some nice sane GUI fonts. Also try to set a sensible
 " value for fileencodings based upon locale. These can all be overridden in
 " the user vimrc file.
@@ -78,104 +53,34 @@ endif
 
 " Make sure we have a sane fallback for encoding detection
 set fileencodings+=default
-" }}}
 
-" {{{ Syntax highlighting settings
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
 endif
-" }}}
 
-" {{{ Terminal fixes
+" Terminal fixes
 if &term ==? "xterm"
-  " Previously we would unset t_RV to prevent gnome-terminal from beeping as
-  " vim started.  These days it appears that gnome-terminal has been repaired,
-  " so re-enable this, and don't restrict t_Co=8.  (21 Jun 2004 agriffis)
-  "set t_RV=			" don't check terminal version
-  "set t_Co=8
   set t_Sb=^[4%dm
   set t_Sf=^[3%dm
   set ttymouse=xterm2	" only works for >=xfree86-3.3.3, should be okay
 endif
-" }}}
 
-" {{{ Filetype plugin settings
-" Enable plugin-provided filetype settings, but only if the ftplugin
-" directory exists (which it won't on livecds, for example).
 if isdirectory(expand("$VIMRUNTIME/ftplugin"))
   filetype plugin on
 
   " Uncomment the next line (or copy to your ~/.vimrc) for plugin-provided
   " indent settings. Some people don't like these, so we won't turn them on by
   " default.
-  " filetype indent on
+  filetype indent on
 endif
-" }}}
 
-" {{{ Fix &shell, see bug #101665.
-if "" == &shell
-  if executable("/bin/bash")
-    set shell=/bin/bash
-  elseif executable("/bin/sh")
-    set shell=/bin/sh
-  endif
-endif
-"}}}
-
-" {{{ Our default /bin/sh is bash, not ksh, so syntax highlighting for .sh
-" files should default to bash. See :help sh-syntax and bug #101819.
-if has("eval")
-  let is_bash=1
-endif
-" }}}
-
-" {{{ Autocommands
-if has("autocmd")
-
-augroup gentoo
-  au!
-
-  " Gentoo-specific settings for ebuilds.  These are the federally-mandated
-  " required tab settings.  See the following for more information:
-  " http://www.gentoo.org/proj/en/devrel/handbook/handbook.xml
-  " Note that the rules below are very minimal and don't cover everything.
-  " Better to emerge app-vim/gentoo-syntax, which provides full syntax,
-  " filetype and indent settings for all things Gentoo.
-  au BufRead,BufNewFile *.e{build,class} let is_bash=1|setfiletype sh
-  au BufRead,BufNewFile *.e{build,class} set ts=4 sw=4 noexpandtab
-
-  " In text files, limit the width of text to 78 characters, but be careful
-  " that we don't override the user's setting.
-  autocmd BufNewFile,BufRead *.txt
-        \ if &tw == 0 && ! exists("g:leave_my_textwidth_alone") |
-        \     setlocal textwidth=78 |
-        \ endif
-
-  " When editing a file, always jump to the last cursor position
-  autocmd BufReadPost *
-        \ if ! exists("g:leave_my_cursor_position_alone") |
-        \     if line("'\"") > 0 && line ("'\"") <= line("$") |
-        \         exe "normal g'\"" |
-        \     endif |
-        \ endif
-
-  " When editing a crontab file, set backupcopy to yes rather than auto. See
-  " :help crontab and bug #53437.
-  autocmd FileType crontab set backupcopy=yes
-
-augroup END
-
-endif " has("autocmd")
-" }}}
-
-" {{{ vimrc.local
+" vimrc.local
 if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
 endif
-" }}}
 
 " vim: set fenc=utf-8 tw=80 sw=2 sts=2 et foldmethod=marker :
 
@@ -185,58 +90,30 @@ set tabstop=4
 set expandtab ts=4 sw=4 ai
 set number
 
-" cscope 
-" Refresh cscope
-nmap <F2>:!find . -iname '*.c' -o -iname '*.cpp' -o -iname '*.h' -o -iname '*.hpp' > cscope.files<CR>:!cscope -b -i cscope.files -f cscope.out<CR>:cs reset<CR>
-
-" filetype plugin on
-
 filetype plugin on
-set ofu=syntaxcomplete#Complete
+" set ofu=syntaxcomplete#Complete
 
-let g:gccsenseUseOmniFunc = 1
+" C++ autocomplete
+" configure tags - add additional tags here or comment out not-used ones
+set tags+=~/.vim/tags/cpp
+"set tags+=~/.vim/tags/gl
+"set tags+=~/.vim/tags/sdl
+"set tags+=~/.vim/tags/qt4
+" build tags of your own project with Ctrl-F12
+map <C-F12> :!exctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
-" omnicppcomplete options
-map <C-x><C-x><C-T> :!exctags -R --c++-kinds=+p --fields=+iaS --extra=+q -f ~/.vim/commontags /usr/include /usr/local/include ~/moz/obj-ff-dbg/dist/include<CR><CR>
-set tags+=~/.vim/tags/common
-set tags+=~/.vim/tags/stl
-set tags+=tags;
- 
-" --- OmniCppComplete ---
-" -- required --
-set nocp " non vi compatible mode
-filetype plugin on " enable plugins
- 
-" -- optional --
-" auto close options when exiting insert mode or moving away
-autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-set completeopt=menu,menuone
- 
-" -- configs --
-let OmniCpp_MayCompleteDot = 1 " autocomplete with .
-let OmniCpp_MayCompleteArrow = 1 " autocomplete with ->
-let OmniCpp_MayCompleteScope = 1 " autocomplete with ::
-let OmniCpp_SelectFirstItem = 2 " select first item (but don't insert)
-let OmniCpp_NamespaceSearch = 2 " search namespaces in this and included files
-let OmniCpp_ShowPrototypeInAbbr = 1 " show function prototype (i.e. parameters) in popup window
-let OmniCpp_LocalSearchDecl = 1 " don't require special style of function opening braces
- 
-" -- ctags --
-" map <ctrl>+F12 to generate ctags for current folder:
-map <C-x><C-t> :!exctags -R --c++-kinds=+p -f ./tags --fields=+iaS --extra=+q .<CR><CR>
-" add current directory's generated tags file to available tags
- 
-" Setup the tab key to do autocompletion
-function! CompleteTab()
-  let prec = strpart( getline('.'), 0, col('.')-1 )
-  if prec =~ '^\s*$' || prec =~ '\s$'
-    return "\<tab>"
-  else
-    return "\<c-x>\<c-o>"
-  endif
-endfunction
- 
-inoremap <tab> <c-r>=CompleteTab()<cr>
+" OmniCppComplete
+let OmniCpp_NamespaceSearch = 1
+let OmniCpp_GlobalScopeSearch = 1
+let OmniCpp_ShowAccess = 1
+let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
+let OmniCpp_MayCompleteDot = 1 " autocomplete after .
+let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
+let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
+let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
+" automatically open and close the popup menu / preview window
+au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+set completeopt=menuone,menu,longest,preview
+
 
 
