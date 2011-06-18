@@ -115,5 +115,29 @@ let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 set completeopt=menuone,menu,longest,preview
 
+" NERDTree
+map <F2> :NERDTreeToggle<CR>
+map <F3> :TlistToggle<CR>
+map <F4> :BufExplorer<CR>
 
-
+fun! ReadMan()
+  " Assign current word under cursor to a script variable:
+  let s:man_word = expand('<cword>')
+  " Open a new window:
+  " :exe ":wincmd n"
+  :exe ":vne"
+  " Move window to far right
+  :exe ":wincmd L"
+  :exe ":vertical resize 90"
+  " Read in the manpage for man_word (col -b is for formatting):
+  :exe ":r!man 2 " . s:man_word . " | col -b"
+  " Goto first line...
+  :exe ":goto"
+  " and delete it:
+  :exe ":delete"
+  " set file type to 'man':
+  :exe ":set filetype=man"
+  :exe ":w! /tmp/mantxt"
+endfun
+" Map the K key to the ReadMan function:
+map K :call ReadMan()<CR>
