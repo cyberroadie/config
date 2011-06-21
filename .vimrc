@@ -86,8 +86,8 @@ endif
 
 " Cyberroadie specific stuff 
 set expandtab
-set tabstop=4
-set expandtab ts=4 sw=4 ai
+set tabstop=2
+set expandtab ts=2 sw=2 ai
 set number
 
 filetype plugin on
@@ -119,8 +119,9 @@ set completeopt=menuone,menu,longest,preview
 map <F2> :NERDTreeToggle<CR>
 map <F3> :TlistToggle<CR>
 map <F4> :BufExplorer<CR>
+map <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
-fun! ReadMan()
+fun! ReadMan(num)
   " Assign current word under cursor to a script variable:
   let s:man_word = expand('<cword>')
   " Open a new window:
@@ -130,7 +131,7 @@ fun! ReadMan()
   :exe ":wincmd L"
   :exe ":vertical resize 90"
   " Read in the manpage for man_word (col -b is for formatting):
-  :exe ":r!man 2 " . s:man_word . " | col -b"
+  :exe ":r!man " a:num " " . s:man_word . " | col -b"
   " Goto first line...
   :exe ":goto"
   " and delete it:
@@ -140,4 +141,5 @@ fun! ReadMan()
   :exe ":w! /tmp/mantxt"
 endfun
 " Map the K key to the ReadMan function:
-map K :call ReadMan()<CR>
+map K :call ReadMan(2)<CR>
+map L :call ReadMan(3)<CR>
