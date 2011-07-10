@@ -203,3 +203,11 @@ zstyle ':completion:*:ssh:*' group-order \
    hosts-domain hosts-host users hosts-ipaddr
 zstyle '*' single-ignored show
 
+# aliasing for GIT
+alias gia='git commit -a -m'
+alias gim='git commit -m'
+alias gis='git status'
+
+# General aliasing
+sc="screen -D -R"
+
