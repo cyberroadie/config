@@ -143,3 +143,5 @@ endfun
 " Map the K key to the ReadMan function:
 map K :call ReadMan(2)<CR>
 map L :call ReadMan(3)<CR>
+
+set mouse=a
