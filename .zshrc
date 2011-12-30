@@ -1,10 +1,13 @@
-
 #source ~/.exports
 
-export PBRT_SEARCHPATH=$HOME/Projects/git/pbrt-v1/bin
+export JAVA_HOME=$(/usr/libexec/java_home)
 #export PORT_SEARCHPATH=/opt/local/bin
-export PATH=$PBRT_SEARCHPATH:$PORT_SEARCHPATH:/usr/local/bin:$PATH
+export PATH=$PBRT_SEARCHPATH:$PORT_SEARCHPATH:/usr/local/bin:~/bin:~/go/bin:$PATH
 export MAVEN_OPTS="-Xms256m -Xmx512m ${FORGE_OPTS}"
+
+export GOROOT=$HOME/go
+#export GOARCH=386
+export GOOS=darwin
 
 #export BOOST_INCLUDE=/opt/local/include
 #export BOOST_LIB=/opt/local/lib
@@ -37,8 +40,6 @@ unsetopt bgnice autoparamslash
 zmodload -a zsh/stat stat
 zmodload -a zsh/zpty zpty
 zmodload -a zsh/zprof zprof
-zmodload -ap zsh/mapfile mapfile
-
 
 PATH="/opt/maven/bin:/usr/local/bin:/usr/local/sbin/:/bin:/sbin:/usr/bin:/usr/sbin:$PATH"
 PATH=/opt/local/bin:/opt/local/sbin:$PATH
@@ -101,18 +102,6 @@ alias rest2html-css='rst2html --embed-stylesheet --stylesheet-path=/usr/share/py
 #    ;;
 #    esac
 #}
-selfupdate(){
-        URL="http://cyberroadie.org/config/zshrc"
-        echo "Updating zshrc from $URL..."
-        echo "Press Ctrl+C within 5 seconds to abort..."
-        sleep 5
-        cp ~/.zshrc ~/.zshrc.old
-        wget $URL -O ~/.zshrc
-	source ~/.zshrc
-        echo "Done; existing .zshrc saved as .zshrc.old"
-}
-#chpwd
-
 autoload -U compinit
 compinit
 bindkey "^?" backward-delete-char

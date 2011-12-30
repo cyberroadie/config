@@ -2,7 +2,7 @@
 export FORGE_OPTS="-Djavax.net.ssl.trustStore=/Users/cyberroadie/Certificates/jssecacerts \
  -Djavax.net.ssl.keyStore=/Users/cyberroadie/Certificates/olivier.van.acker.p12 \
  -Djavax.net.ssl.keyStoreType=PKCS12 \
- -Djavax.net.ssl.keyStorePassword=po77ertjes"
+ -Djavax.net.ssl.keyStorePassword=appeltaart"
 
 export MAVEN_OPTS="-Xms256m -Xmx512m ${FORGE_OPTS}"
 
