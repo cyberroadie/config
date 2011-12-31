@@ -16,7 +16,7 @@ export GOOS=darwin
 # setopt NOHUP
 #setopt NOTIFY
 #setopt NO_FLOW_CONTROL
-setopt INC_APPEND_HISTORY SHARE_HISTORY
+setopt INC_APPEND_HISTORY 
 setopt APPEND_HISTORY
 # setopt AUTO_LIST		# these two should be turned off
 # setopt AUTO_REMOVE_SLASH
