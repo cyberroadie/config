@@ -5,9 +5,9 @@ export JAVA_HOME=$(/usr/libexec/java_home)
 export PATH=$PBRT_SEARCHPATH:$PORT_SEARCHPATH:/usr/local/bin:~/bin:~/go/bin:$PATH
 export MAVEN_OPTS="-Xms256m -Xmx512m ${FORGE_OPTS}"
 
-export GOROOT=$HOME/go
-#export GOARCH=386
-export GOOS=darwin
+export GOROOT=/usr/local/go
+export GOARCH=386
+export GOOS=freebsd
 
 #export BOOST_INCLUDE=/opt/local/include
 #export BOOST_LIB=/opt/local/lib

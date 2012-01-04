@@ -89,6 +89,8 @@ set expandtab
 set tabstop=2
 set expandtab ts=2 sw=2 ai
 set number
+" substitute all occurrences of the word under the cursor:
+:nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 
 filetype plugin on
 " set ofu=syntaxcomplete#Complete
@@ -100,7 +102,7 @@ set tags+=~/.vim/tags/cpp
 "set tags+=~/.vim/tags/sdl
 "set tags+=~/.vim/tags/qt4
 " build tags of your own project with Ctrl-F12
-map <C-F12> :!exctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+map <F6> :!exctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 " OmniCppComplete
 let OmniCpp_NamespaceSearch = 1
@@ -144,4 +146,3 @@ endfun
 map K :call ReadMan(2)<CR>
 map L :call ReadMan(3)<CR>
 
-set mouse=a

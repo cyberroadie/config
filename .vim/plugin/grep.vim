@@ -249,7 +249,7 @@
 " zero. If this is set to zero, then only the 'find' utility is used for
 " recursive searches:
 "
-"       :let Grep_Find_Use_Xargs = 0
+       :let Grep_Find_Use_Xargs = 0
 " 
 " To handle file names with space characters in them, the xargs utility
 " is invoked with the '--null' argument. If the xargs utility in your system
