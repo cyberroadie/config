@@ -310,9 +310,9 @@ settings = {
 };
 hilights = (
   { text = "nick"; nick = "yes"; word = "yes"; },
-  { text = "cyberroadie "; nick = "yes"; word = "yes"; },
-  { text = "cyberroadie"; nick = "yes"; word = "yes"; },
-  { text = "cyberroad"; nick = "yes"; word = "yes"; }
+  { text = "olivier"; nick = "yes"; word = "yes"; },
+  { text = "olivierva"; nick = "yes"; word = "yes"; },
+  { text = "ovanacker"; nick = "yes"; word = "yes"; }
 );
 windows = {
   1 = { immortal = "yes"; name = "(status)"; level = "ALL"; };
