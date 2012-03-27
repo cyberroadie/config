@@ -1,16 +1,9 @@
-#source ~/.exports
-
-export JAVA_HOME=$(/usr/libexec/java_home)
-#export PORT_SEARCHPATH=/opt/local/bin
-export PATH=$PBRT_SEARCHPATH:$PORT_SEARCHPATH:/usr/local/bin:~/bin:~/go/bin:$PATH
-export MAVEN_OPTS="-Xms256m -Xmx512m ${FORGE_OPTS}"
-
-export GOROOT=/usr/local/go
-export GOARCH=386
+export GOBIN=$GOROOT/bin
+export GOARCH=`uname -p`
 export GOOS=freebsd
 
-#export BOOST_INCLUDE=/opt/local/include
-#export BOOST_LIB=/opt/local/lib
+export PATH=$PORT_SEARCHPATH:/usr/local/maven/bin:/usr/local/bin:~/bin:$GOBIN:$PATH
+export MAVEN_OPTS="-Xms256m -Xmx512m ${FORGE_OPTS}"
 
 # next lets set some enviromental/shell pref stuff up
 # setopt NOHUP
@@ -41,8 +34,6 @@ zmodload -a zsh/stat stat
 zmodload -a zsh/zpty zpty
 zmodload -a zsh/zprof zprof
 
-PATH="/opt/maven/bin:/usr/local/bin:/usr/local/sbin/:/bin:/sbin:/usr/bin:/usr/sbin:$PATH"
-PATH=/opt/local/bin:/opt/local/sbin:$PATH
 TZ="Europe/London"
 HISTFILE=$HOME/.zhistory
 HISTSIZE=1000
