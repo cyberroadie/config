@@ -31,6 +31,9 @@ set number
 set tags+=~/.vim/tags/cpp
 map <F6> :!exctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
+" Looks for tags file in current directory, traverses up until it finds one
+set tags=./tags;/
+
 " NERDTree
 map <F2> :NERDTreeToggle<CR>
 map <F3> :TlistToggle<CR>
