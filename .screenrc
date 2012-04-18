@@ -1,0 +1,3 @@
+defscrollback 65535
+nethack on
+hardstatus alwayslastline "%{wR}[tao]%{wb} %H %{wk} %w"
