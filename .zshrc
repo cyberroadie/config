@@ -1,9 +1,10 @@
+export GOROOT=/Users/olivier/Projects/MSc/go-sctp
 export GOBIN=$GOROOT/bin
-export GOARCH=`uname -p`
-export GOOS=freebsd
+export GOARCH=amd64
+export GOOS=darwin
 
-export PATH=$PORT_SEARCHPATH:/usr/local/maven/bin:/usr/local/bin:~/bin:$GOBIN:$PATH
-export MAVEN_OPTS="-Xms256m -Xmx512m ${FORGE_OPTS}"
+export PATH=$GOBIN:/usr/local/maven/bin:/usr/local/bin:~/bin:$PATH
+export MAVEN_OPTS="-Xms256m -Xmx512m"
 
 # next lets set some enviromental/shell pref stuff up
 # setopt NOHUP
@@ -189,5 +190,5 @@ alias gim='git commit -m'
 alias gis='git status'
 
 # General aliasing
-sc="screen -D -R"
-
+alias sc="screen -D -R"
+alias vimenc="vim -u ~/.encrypted_vim_rc -x"
