@@ -192,3 +192,7 @@ alias gis='git status'
 # General aliasing
 alias sc="screen -D -R"
 alias vimenc="vim -u ~/.encrypted_vim_rc -x"
+
+if [ `uname` = "Darwin" ]; then
+  export JAVA_HOME=`/usr/libexec/java_home`
+fi
