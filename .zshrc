@@ -1,4 +1,4 @@
-export GOROOT=/Users/olivier/Projects/MSc/go-sctp
+export GOROOT=/usr/local/go
 export GOBIN=$GOROOT/bin
 export GOARCH=amd64
 export GOOS=darwin
@@ -54,7 +54,7 @@ EDITOR='vim'
     PR_NO_COLOR="%{$terminfo[sgr0]%}"
 PS1="[$PR_BLUE%n$PR_WHITE:$PR_RED%2c$PR_NO_COLOR]%(!.#.$) "
 #PS1="[$PR_BLUE%n$PR_WHITE@$PR_GREEN%U%m%u$PR_NO_COLOR:$PR_RED%2c$PR_NO_COLOR]%(!.#.$) "
-RPS1="`whoami`@`hostname`:$PR_LIGHT_YELLOW(%D{%m-%d %H:%M})$PR_NO_COLOR"
+#RPS1="`whoami`@`hostname`:$PR_LIGHT_YELLOW(%D{%m-%d %H:%M})$PR_NO_COLOR"
 #LANGUAGE=
 LC_ALL='en_US.UTF-8'
 LANG='en_US.UTF-8'
