@@ -1,3 +1,4 @@
+call pathogen#infect()
 scriptencoding utf-8
 
 set nocompatible        " Use Vim defaults (much better!)
@@ -32,7 +33,8 @@ set tags+=~/.vim/tags/cpp
 map <F6> :!exctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 " Looks for tags file in current directory, traverses up until it finds one
-set tags=./tags;/
+" set tags=./tags;/
+set tags=tags,./tags,$GOROOT/src/tags
 
 " NERDTree
 map <F2> :NERDTreeToggle<CR>

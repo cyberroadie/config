@@ -1,9 +1,11 @@
+export GOPATH=/Users/cyberroadie/Projects/GoPackages
 export GOROOT=/usr/local/go
-export GOBIN=$GOROOT/bin
-export GOARCH=amd64
-export GOOS=darwin
+#export GOBIN=$GOROOT/bin
+#export GOARCH=amd64
+#export GOOS=darwin
+export PYTHONPATH=/tmp/:$PYTHONPATH
 
-export PATH=$GOBIN:/usr/local/maven/bin:/usr/local/bin:~/bin:$PATH
+export PATH=$GOBIN:/usr/local/maven/bin:/usr/bin:~/bin:$PATH
 export MAVEN_OPTS="-Xms256m -Xmx512m"
 
 # next lets set some enviromental/shell pref stuff up
@@ -74,7 +76,8 @@ unsetopt ALL_EXPORT
 alias slrn="slrn -n"
 alias man='LC_ALL=C LANG=C man'
 alias f=finger
-alias ll='ls -al'
+alias ll='ls -l'
+alias la='ls -al'
 #alias ls='ls --color=auto '
 alias offlineimap-tty='offlineimap -u TTY.TTYUI'
 alias hnb-partecs='hnb $HOME/partecs/partecs-hnb.xml'
